@@ -18,3 +18,18 @@ Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -recurse | Get-
 [Thank you Jason]
 
 
+### Identify Which Cipher Suites Are Enabled on a Windows Endpoint  
+```powershell
+Get-TlsCipherSuite | Format-Table -Property CipherSuite, CipherBlockLength, Cipher, Hash, Name
+```
+
+### Troubleshoot SSL/TLS Connection Rejection  
+Spill the connection attempt details:  
+```powershell
+$targetHost = 'https://host.domain.com/ssc';(Invoke-WebRequest -Uri $targetHost).RawContent
+```
+If you see any TLS errors, try explicitly setting the TLS version:  
+```powershell
+$targetHost = 'https://host.domain.com/ssc';[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (Invoke-WebRequest -Uri $targetHost).RawContent
+```
+
