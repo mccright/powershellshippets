@@ -18,9 +18,24 @@ Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -recurse | Get-
 [Thank you Jason]
 
 
+What is the default security protocol for my Windows endpoint?
+```powershell
+[Net.ServicePointManager]::SecurityProtocol
+```
+
+What are the available TLS protocols?
+```powershell
+[enum]::GetValues('Net.SecurityProtocolType')
+```
+
 ### Identify Which Cipher Suites Are Enabled on a Windows Endpoint  
 ```powershell
 Get-TlsCipherSuite | Format-Table -Property CipherSuite, CipherBlockLength, Cipher, Hash, Name
+```
+
+Set or change the protocol list to just "Tls12":
+```powershell
+[System.Net.ServicePointManager]::SecurityProtocol = 'Tls12'
 ```
 
 ### Troubleshoot SSL/TLS Connection Rejection  
