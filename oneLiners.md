@@ -41,10 +41,10 @@ Set or change the protocol list to just "Tls12":
 ### Troubleshoot SSL/TLS Connection Rejection  
 Spill the connection attempt details:  
 ```powershell
-$targetHost = 'https://host.domain.com/ssc';(Invoke-WebRequest -Uri $targetHost).RawContent
+$targetHost = 'https://host.domain.com/';(Invoke-WebRequest -Uri $targetHost).RawContent
 ```
 If you see any TLS errors, try explicitly setting the TLS version:  
 ```powershell
-$targetHost = 'https://host.domain.com/ssc';[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (Invoke-WebRequest -Uri $targetHost).RawContent
+$targetHost = 'https://host.domain.com/';[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (Invoke-WebRequest -Uri $targetHost).RawContent
 ```
 
