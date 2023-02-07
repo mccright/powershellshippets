@@ -1,5 +1,6 @@
 # This model is only for scripts that you write and understand
-# First, ensure that the PowerShell Execution Policy is set to 'ByPass'
+# First, **if** you understand the risks associated with executing the code,
+# ensure that the PowerShell Execution Policy is set to 'ByPass'
 $registryPath = "HKLM:\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell"
 $Name = "ExecutionPolicy"
 $valueString = "ByPass"
